@@ -1,4 +1,3 @@
-// SSR
 import { fetchNoteById } from "@/lib/api";
 import DetailsPageClient from "./NoteDetails.client";
 import {
@@ -8,16 +7,16 @@ import {
 } from "@tanstack/react-query";
 
 interface Props {
-  params: Promise<{ noteId: string }>;
+  params: Promise<{ id: string }>;
 }
 const Details = async ({ params }: Props) => {
-  const { noteId } = await params;
+  const { id } = await params;
 
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["note", noteId],
-    queryFn: () => fetchNoteById(noteId),
+    queryKey: ["note", id],
+    queryFn: () => fetchNoteById(id),
   });
 
   return (

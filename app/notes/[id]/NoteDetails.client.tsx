@@ -5,11 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
 const DetailsPageClient = () => {
-  const { noteId } = useParams<{ noteId: string }>();
+  const { id } = useParams<{ id: string }>();
 
   const { data } = useQuery({
-    queryKey: ["note", noteId],
-    queryFn: () => fetchNoteById(noteId),
+    queryKey: ["note", id],
+    queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
 
